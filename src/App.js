@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 
-const App = () => {
-  const initial = 0
-  const [count, setCount] = useState(initial)
+const App = props => {
 
-  const increment = () => setCount(count + 1)
-  const decrement = () => setCount(count - 1)
+  const [name, setName] = useState(props.name)
+  const [price, setPrice] = useState(props.price)
 
-  const increment2 = () => setCount(previousCount => previousCount + 1)
-  const decrement2 = () => setCount(previousCount => previousCount - 1)
-  const reset = () => setCount(initial)
-
-  const twice = () => setCount(count * 2)
-
-  const div3 = () => setCount((count % 3 == 0) ? count / 3 : count)
+  const reset = () => {
+    setPrice(props.price)
+    setName(props.price)
+  }
 
   return (
     <>
-      <div>
-        count {count}
-      </div>
-      <button onClick={increment2}>+1</button>
-      <button onClick={decrement2}>-1</button>
+      <p>現在の{name}は、{price}円です。</p>
+      <button onClick={() => setPrice(price + 1)}>+1</button>
+      <input value={name} onChange={e => setName(e.target.value)}/>
       <button onClick={reset}>reset</button>
-      <button onClick={twice}>*2</button>
-      <button onClick={div3}>div3</button>
     </>
   )
+}
+
+App.defaultProps = {
+  name: '',
+  price: 1000
 }
 
 export default App;
