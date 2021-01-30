@@ -10,7 +10,8 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
 
   const [title, setTitle] = useState('') 
-  const [body, setBody] = useState('') 
+  const [body, setBody] = useState('')
+
 
   const addEvent = e => {
     e.preventDefault()
@@ -27,8 +28,14 @@ const App = () => {
     setBody('')
   }
 
+  const unCreatable = title === "" || body === ""
+
   const deleteAllEvents = e => {
     e.preventDefault()
+
+    if (!window.confirm("すべてのイベントを削除しますが、大丈夫ですか？")) {
+      return
+    }
 
     const action = {
       type: 'DELETE_ALL_EVENTS'
@@ -36,6 +43,8 @@ const App = () => {
 
     dispatch(action)
   }
+
+  const unDeletetable = state.length === 0
 
   return (
     <div className="container-fluid">
@@ -57,13 +66,15 @@ const App = () => {
         </div>
         <button
           className="btn btn-primary"
-          onClick={addEvent}>
+          onClick={addEvent}
+          disabled={unCreatable}>
           イベントを作成
         </button>
         <button
           className="btn btn-danger"
-          onClick={deleteAllEvents}>
-          すべてのイベントを作成
+          onClick={deleteAllEvents}
+          disabled={unDeletetable}>
+          すべてのイベントを削除
         </button>
       </form>
 
