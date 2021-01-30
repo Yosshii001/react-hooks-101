@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+
+import AppContext from '../contexts/AppContext'
 
 import Event from './Event'
 
-const Events = ({state, dispatch}) => {
+const Events = () => {
+
+  const { state } = useContext(AppContext)
+
   return (<>
     <h4>イベント一覧</h4>
     <table className="table table-hover">
@@ -17,7 +22,7 @@ const Events = ({state, dispatch}) => {
       <tbody>
       {
         state.map(
-          event => (<Event dispatch={dispatch} event={event} />)
+          event => (<Event event={event} />)
         )
       }
       </tbody>
