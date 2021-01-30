@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { DELETE_EVENT } from '../actions'
+
 const Event = ({dispatch, event}) => {
   const handleClickDeleteButton = id => {
 
@@ -12,7 +14,7 @@ const Event = ({dispatch, event}) => {
     }
 
     const action = {
-      type: 'DELETE_EVENT',
+      type: DELETE_EVENT,
       id: id
     }
     dispatch(action)
