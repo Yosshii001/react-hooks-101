@@ -41,7 +41,7 @@ const EventForm = () => {
     dispatch(action)
   }
 
-  const unDeletetable = state.length === 0
+  const unDeletetable = state.events.length === 0
 
   return (<>
     <form>
