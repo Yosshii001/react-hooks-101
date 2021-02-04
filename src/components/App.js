@@ -14,7 +14,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, [])
 
   return (
-    <AppContext.Provider value={{ state, dispatch}}>
+    <AppContext.Provider value={{ state, dispatch }}>
       <EventForm/>
       <Events/>
     </AppContext.Provider>
