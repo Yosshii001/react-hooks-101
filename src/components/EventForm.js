@@ -52,11 +52,18 @@ const EventForm = () => {
     }
 
     dispatch(action)
-
     dispatch({
       type: ADD_OPERATION_LOG,
       description: '全てのイベントを削除しました',
       operatedAt: timeCurrentIso8601()
+    })
+  }
+
+  const deleteAllLogs = e => {
+    e.preventDefault()
+
+    dispatch({
+      type: DELETE_ALL_OPERATION_LOGS
     })
   }
 
@@ -90,6 +97,11 @@ const EventForm = () => {
         onClick={deleteAllEvents}
         disabled={unDeletetable}>
         すべてのイベントを削除
+      </button>
+      <button
+        className="btn btn-danger"
+        onClick={deleteAllLogs}>
+        すべての操作ログを削除
       </button>
     </form>
     </>
