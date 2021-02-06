@@ -22,7 +22,7 @@ const Events = () => {
       <tbody>
       {
         state.events.map(
-          event => (<Event event={event} />)
+          (event, index) => (<Event event={event} key={index} />)
         )
       }
       </tbody>

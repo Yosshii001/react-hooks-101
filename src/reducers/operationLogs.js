@@ -5,11 +5,11 @@ import {
 
 const operationLogs = (state = [], action) => {
 
-  switch (action) {
+  switch (action.type) {
     case ADD_OPERATION_LOG:
-
+    
       const operationLog = {
-        descrition: action.descrition,
+        descrition: action.description,
         operatedAt: action.operatedAt
       }
       
